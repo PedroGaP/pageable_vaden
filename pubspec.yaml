@@ -10,6 +10,8 @@ dependencies:
   flutter:
     sdk: flutter
   json_annotation: 4.9.0
+  mysql1: ^0.20.0
+  shelf: ^1.4.2
 
 dev_dependencies:
   flutter_test:

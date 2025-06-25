@@ -3,8 +3,14 @@ import 'package:pageable_vaden/page.dart';
 import 'package:pageable_vaden/pageable.dart';
 import 'package:pageable_vaden/repository/base_repository.dart';
 
-class PostgresRepository<T extends BaseModel, ID>
+/// The class for MongoDbRepository implementation
+///
+/// The content is saved on a server for the credentials given
+abstract class MongoDbRepository<T extends BaseModel, ID>
     extends BaseRepository<T, ID> {
+  /// Override this in every model to return the table name
+  String get tableName;
+
   @override
   Page<T> findAll({Pageable? pageable}) {
     // TODO: implement findAll
@@ -12,20 +18,30 @@ class PostgresRepository<T extends BaseModel, ID>
   }
 
   @override
-  T? findById(int id) {
+  findById(ID id) {
     // TODO: implement findById
     throw UnimplementedError();
   }
 
   @override
-  bool remove(int id) {
+  bool remove(ID id) {
     // TODO: implement remove
     throw UnimplementedError();
   }
 
   @override
-  T? save(T model) {
+  save(BaseModel model, {SaveType? type = SaveType.insert}) {
     // TODO: implement save
+    throw UnimplementedError();
+  }
+
+  @override
+  Page<T> saveAll(
+    List<dynamic> list, {
+    Pageable? pageable = const Pageable(),
+    SaveType? type = SaveType.insert,
+  }) {
+    // TODO: implement saveAll
     throw UnimplementedError();
   }
 }
