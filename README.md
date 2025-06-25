@@ -1,5 +1,7 @@
 # 📦 PageableVaden
 
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) ![WIP](https://img.shields.io/badge/status-WIP-yellow) [![Pub Version](https://img.shields.io/pub/v/pageable_vaden.svg)](https://pub.dev/packages/pageable_vaden) ![Made with Dart](https://img.shields.io/badge/Made%20with-Dart-0175C2.svg?logo=dart)
+
 **PageableVaden** é uma package para Dart desenvolvida para uso na framework **Vaden** – uma framework que facilita a criação de APIs REST do lado do servidor com Dart.
 
 Inspirada na abordagem do `Pageable` do Spring Boot, esta package fornece uma implementação simples, extensível e integrada de paginação e ordenação de dados, com suporte a repositórios automáticos e integração fluida com controladores e serviços da Vaden.
@@ -16,6 +18,12 @@ Para criar um projeto basta inserir a seguinte linha no `pubspec.yaml` do seu pr
 ```yaml
 dependencies:
   pageable_vaden:
+```
+
+OU
+
+```cli
+dart pub add pageable_vaden
 ```
 
 > [!WARNING]
@@ -295,23 +303,10 @@ A `PageableVaden` ainda está em desenvolvimento ativo. Algumas funcionalidades 
 | ✅            | Classe Page<T> com metadados (totalPages, etc.)                |
 | ✅            | Suporte a múltiplas ordenações (sort=name,asc&sort=email,desc) |
 | 🟡            | Filtros dinâmicos (ex: filter=name:joao)                       |
-| 🟡            | Cursor-based pagination                                        |
+| 🟡            | Paginação Cursor-based                                         |
+| 🟡            | Repositórios PostgreSQL e MongoDB                              |
 | 🔜            | CLI para geração automática de repositórios e DTOs             |
 | Mais em breve | Mais em breve                                                  |
-
----
-
-## 🔍 Exemplo de Filtro Futuro
-
-Será possível fazer buscas como:
-
-```
-GET /users?sort=name:joao
-```
-
-Retornando apenas os utilizadores cujo nome contenha "joao".
-
----
 
 ## 📄 Licença
 
