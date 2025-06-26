@@ -151,41 +151,23 @@ class UserMapper {
 ### 5️⃣ Criar o Repositório
 
 ```dart
-@Component()
-class UserService {
-  final UserRepository _repository;
-  final UserMysqlRepository _repositoryMysql;
+@Repository()
+class UserMysqlRepository extends MySqlRepository<User, int> {
+  /// Override this in every repository to return the table name
+  @override
+  String get tableName => "users";
 
-  UserService(this._repository, this._repositoryMysql);
+  /// Override this in every repository to return table id column
+  @override
+  String? get idColumn => "id";
 
-  FutureOr<Page<User>> getAllUsersMySql({Pageable? pageable}) async {
-    return await _repositoryMysql.findAll(pageable: pageable);
-  }
+  /// Override this in every repository to parse Map to the Model
+  @override
+  User Function(Map<String, dynamic> p1)? get fromMap => (e) => User.fromMap(e);
 
-  FutureOr<User?> addUserMySql({required UserDto userDto}) async {
-    User user = UserMapper.fromDto(dto: userDto);
-    print(user.toJson());
-    return await _repositoryMysql.save(user);
-  }
-
-  FutureOr<Page<User>> addAllUsersMySql({required List<User> list}) {
-    return _repositoryMysql.saveAll(list);
-  }
-
-  FutureOr<User?> getUserByIdMySql({required int id}) {
-    return _repositoryMysql.findById(id);
-  }
-
-  FutureOr<bool> removeUserMySql({required int id}) {
-    return _repositoryMysql.remove(id);
-  }
-
-  Future<User?> updateUserMySql({required UserUpdateDto userDto}) async {
-    User user = UserMapper.fromUpdateDto(dto: userDto);
-    print(user.toJson());
-    return await _repositoryMysql.save(user, type: SaveType.update);
-  }
+  UserMysqlRepository();
 }
+
 
 ```
 
